@@ -85,6 +85,9 @@
                 "SECTION",
                 "vstart",
                 "align",
+                "resb",
+                "$",
+                "$$",
             );
             Type = "xcode.syntax.keyword";
             AltType = "xcode.syntax.identifier";    // non-keywords are identifiers
@@ -98,7 +101,11 @@
             Words = (
                 "byte",
                 "bits",
-                "equ"
+                "equ",
+                "dword",
+                "dw",
+                "dd",
+                "db",
             );
             Type = "xcode.syntax.preprocessor";
 		};
@@ -109,6 +116,14 @@
             StartChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
             Chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
             Words = (
+                "ah",
+                "al",
+                "bh",
+                "bl",
+                "ch",
+                "cl",
+                "dh",
+                "dl",
                 "ax",
                 "bx",
                 "cx",
@@ -258,6 +273,7 @@
             Start = "[";
             End = "]";
             IncludeRules = (
+                "xcode.lang.NASM.tagX",
                 "xcode.lang.NASM.type",
                 "xcode.lang.NASM.identifier",
                 "xcode.lang.NASM.number",  
