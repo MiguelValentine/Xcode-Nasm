@@ -86,6 +86,15 @@
                 "vstart",
                 "align",
                 "resb",
+                "times",
+                "far",
+                "rep",
+                "jl",
+                "jz",
+                "jnz",
+                "pushad",
+                "popad",
+                "cmovnz",
                 "$",
                 "$$",
             );
@@ -102,10 +111,12 @@
                 "byte",
                 "bits",
                 "equ",
+                "word",
                 "dword",
                 "dw",
                 "dd",
                 "db",
+                "%include",
             );
             Type = "xcode.syntax.preprocessor";
 		};
@@ -272,11 +283,12 @@
         Syntax = {
             Start = "[";
             End = "]";
+            "ParseEndBeforeIncludedRules" = YES;
             IncludeRules = (
                 "xcode.lang.NASM.tagX",
                 "xcode.lang.NASM.type",
                 "xcode.lang.NASM.identifier",
-                "xcode.lang.NASM.number",  
+                "xcode.lang.NASM.number",
             );
         };
     },
