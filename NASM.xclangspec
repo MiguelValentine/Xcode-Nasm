@@ -1,0 +1,267 @@
+//  NASM
+//  NASM.xclangspec v1.0.0
+
+//	NASM language specification for Xcode 7.2.1+/
+
+(
+
+/****************************************************************************/
+// MARK: NASM keywords
+/****************************************************************************/
+	{
+		Identifier = "xcode.lang.NASM.identifier";
+		Syntax = {
+            StartChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ[";
+            Chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789[]";
+            Words = (
+		        "adc",
+                "add",
+                "and",
+                "arpl",
+                "bound",
+                "bswap",
+                "bts",
+                "btr",
+                "btc",
+                "bt",
+                "call",
+                "cbw",
+                "cld",
+                "cli",
+                "cmp",
+                "cmps",
+                "cpuid",
+                "cwd",
+                "dec",
+                "div",
+                "hlt",
+                "idiv",
+                "in",
+                "inc",
+                "int3",
+                "int",
+                "into",
+                "invlpg",
+                "iret",
+                "je",
+                "jne",
+                "jmp",
+                "lgdt",
+                "lidt",
+                "lldt",
+                "loop",
+                "ltr",
+                "mov",
+                "movsb",
+                "movsd",
+                "movsw",
+                "movsx",
+                "movzx",
+                "mul",
+                "neg",
+                "not",
+                "or",
+                "out",
+                "pop",
+                "popf",
+                "popfd",
+                "push",
+                "pushf",
+                "pushfd",
+                "ret",
+                "retf",
+                "rol",
+                "ror",
+                "sgdt",
+                "shl",
+                "shr",
+                "std",
+                "sti",
+                "test",
+                "ud2",
+                "xchg",
+                "xlat",
+                "xor",
+                "SECTION",
+                "vstart",
+                "align",
+            );
+            Type = "xcode.syntax.keyword";
+            AltType = "xcode.syntax.identifier";    // non-keywords are identifiers
+		};
+    },
+    {
+		Identifier = "xcode.lang.NASM.type";
+		Syntax = {
+            StartChars = "b";
+            Chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            Words = (
+                "byte",
+                "bits",
+                "equ"
+            );
+            Type = "xcode.syntax.preprocessor";
+		};
+    },
+    {
+		Identifier = "xcode.lang.NASM.tagX";
+		Syntax = {
+            StartChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            Chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            Words = (
+                "ax",
+                "bx",
+                "cx",
+                "dx",
+                "cs",
+                "ds",
+                "es",
+                "ss",
+                "fs",
+                "gs",
+                "sp",
+                "bp",
+                "si",
+                "di",
+                "ip",
+                "eflags",
+                "cr0",
+                "cr1",
+                "cr2",
+                "cr3",
+                "cr4",
+                "cr8",
+                "dr0",
+                "dr1",
+                "dr2",
+                "dr3",
+                "dr4",
+                "dr5",
+                "dr6",
+                "dr7",
+                "eip",
+                "tsc",
+                "eax",
+                "ebx",
+                "ecx",
+                "edx",
+                "esp",
+                "ebp",
+                "esi",
+                "edi",
+                "gdtr",
+                "idtr",
+                "ldtr",
+                "tr",
+                "cw",
+                "sw",
+                "tw",
+                "fip",
+                "fea",
+                "fcs",
+                "fds",
+                "fop",
+                "fstack",
+                "rax",
+                "rbx",
+                "rcx",
+                "rdx",
+                "rsi",
+                "rdi",
+                "rbp",
+                "rsp",
+                "r8",
+                "r9",
+                "r10",
+                "r11",
+                "r12",
+                "r13",
+                "r14",
+                "r15",
+            );
+            Type = "xcode.syntax.identifier.class";
+		};
+    },
+/****************************************************************************/
+// MARK: NASM Syntax Coloring
+/****************************************************************************/
+    {
+        Identifier = "xcode.lang.NASM";
+        Description = "NASM Coloring";
+        BasedOn = "xcode.lang.simpleColoring";
+        IncludeInMenu = YES;
+        UsesCLikeIndentation = YES;
+        Name = "NASM";
+        Syntax = {
+            Tokenizer = "xcode.lang.NASM.lexer";
+            IncludeRules = (
+                "xcode.lang.string",
+            );
+            Type = "xcode.syntax.plain";
+        };
+    },
+    
+    {
+        Identifier = "xcode.lang.NASM.lexer";
+        Syntax = {
+            IncludeRules = (
+                "xcode.lang.NASM.comment",
+                "xcode.lang.string",
+                "xcode.lang.string.singlequote",
+                "xcode.lang.NASM.Curly",
+                "xcode.lang.NASM.number",
+                "xcode.lang.NASM.tagX",
+                "xcode.lang.NASM.type",
+                "xcode.lang.NASM.identifier",
+            );
+        };
+    },
+    
+    //备注
+    //comment
+    {
+        Identifier = "xcode.lang.NASM.comment";
+        Syntax = {
+            Start = ";";
+            Until = "\n";
+            IncludeRules = (
+                "xcode.lang.url",
+                "xcode.lang.url.mail",
+                "xcode.lang.comment.mark"
+            );
+            Type = "xcode.syntax.comment.doc";
+        };
+    },
+    
+    //数字
+    //number
+    {
+        Identifier = "xcode.lang.NASM.number";
+        Syntax = {
+            StartChars = "0123456789";
+            Chars = "0123456789xabcdefABCDEFDH_";
+            Match = (
+                "^[0-9]+D?$",
+                "^[0-1_]+B?$",
+                "^0x[0-9A-F]+$",
+                "^[0-9A-F]+H$",
+            );
+            Type = "xcode.syntax.number";
+        };
+    },
+    
+    //括号
+    //curly
+    {
+        Identifier = "xcode.lang.NASM.Curly";
+        Syntax = {
+            Start = "[";
+            End = "]";
+            IncludeRules = (
+                "xcode.lang.NASM.type",
+                "xcode.lang.NASM.identifier",
+                "xcode.lang.NASM.number",  
+            );
+        };
+    },
+)
