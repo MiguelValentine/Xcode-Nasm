@@ -102,6 +102,17 @@
                 "repe",
                 "$",
                 "$$",
+                "near",
+                "rdmsr",
+                "wrmsr",
+                "stosw",
+                "lea",
+                "jc",
+                "setc",
+                "setnz",
+                "setz",
+                "setnb",
+                "jb",
             );
             Type = "xcode.syntax.keyword";
             AltType = "xcode.syntax.identifier";    // non-keywords are identifiers
@@ -122,6 +133,11 @@
                 "dd",
                 "db",
                 "%include",
+                "%define",
+                "%macro",
+                "%endmacro",
+                "%ifndef",
+                "%endif",
             );
             Type = "xcode.syntax.preprocessor";
 		};
