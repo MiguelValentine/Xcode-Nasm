@@ -113,6 +113,7 @@
                 "setz",
                 "setnb",
                 "jb",
+                "jnc",
             );
             Type = "xcode.syntax.keyword";
             AltType = "xcode.syntax.identifier";    // non-keywords are identifiers
@@ -138,6 +139,7 @@
                 "%endmacro",
                 "%ifndef",
                 "%endif",
+                "lock",
             );
             Type = "xcode.syntax.preprocessor";
 		};
